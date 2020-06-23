@@ -5,6 +5,9 @@ export default {
   generate: {
     fallback: true
   },
+  router: {
+    routeNameSplitter: '/'
+  },
   mode: "universal",
   /*
    ** Headers of the page
