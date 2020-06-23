@@ -1,10 +1,10 @@
 require("dotenv").config();
 
 export default {
-  // generate: {
-  //   routes: ["/movies/:movie"]
-  // },
-  target: 'static',
+  generate: {
+    fallback: true
+  },
+  target: "static",
   mode: "universal",
   /*
    ** Headers of the page
