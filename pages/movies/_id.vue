@@ -13,14 +13,12 @@
           <h1 class="font-heading text-white text-4xl">
             {{ movie.title }}
             <span class="font-sans text-2xl align-middle">
-              ({{
-              stringToDate(movie.release_date, { year: "numeric" })
-              }})
+              ({{ stringToDate(movie.release_date, { year: "numeric" }) }})
             </span>
           </h1>
           <div class="text-white">
             <span class="mr-8" v-if="movie.runtime > 0">
-              <font-awesome-icon :icon="['far', 'clock']" />
+              <font-awesome-icon class="align-text-bottom" fixedWidth size="1x" :icon="['far', 'clock']" />
               {{ movie.runtime }} min
             </span>
             <span v-for="(genre, index) in movie.genres" :key="genre.id">
@@ -43,17 +41,17 @@
         />
         <div class="mb-6 w-1/2 sm:w-auto">
           <p class="font-bold">TMDb Rating</p>
-          <div class="mt-2 inline-block bg-yellow-400 rounded px-2 align-text-bottom">
+          <div
+            class="mt-2 inline-block bg-yellow-400 rounded px-2 align-text-bottom"
+          >
             <font-awesome-icon
-              class="text-base text-white"
+              class="align-text-top text-white"
+              fixedWidth
               size="1x"
               :icon="['fas', 'star']"
-              style="vertical-align: baseline !important;"
             />
             <span class="text-gray-800 font-bold text-xl">
-              {{
-              movie.vote_average
-              }}
+              {{ movie.vote_average }}
             </span>
           </div>
         </div>
@@ -62,71 +60,110 @@
           <p class="font-bold">Release Date</p>
           <p>
             {{
-            stringToDate(movie.release_date, {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-            })
+              stringToDate(movie.release_date, {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+              })
             }}
           </p>
         </div>
 
         <div class="mb-6 w-1/2 sm:w-auto">
           <p class="font-bold">Budget</p>
-          <p>{{ movie.budget > 0 ? "$" + movie.budget.toLocaleString() : "-" }}</p>
+          <p>
+            {{ movie.budget > 0 ? "$" + movie.budget.toLocaleString() : "-" }}
+          </p>
         </div>
 
         <div class="mb-6 w-1/2 sm:w-auto">
           <p class="font-bold">Revenue</p>
-          <p>{{ movie.revenue > 0 ? "$" + movie.revenue.toLocaleString() : "-" }}</p>
+          <p>
+            {{ movie.revenue > 0 ? "$" + movie.revenue.toLocaleString() : "-" }}
+          </p>
         </div>
 
         <div class="mb-6 w-full sm:w-auto">
           <p class="font-bold mb-1">Links</p>
-          
+          <p
+            v-if="
+              !movie.homepage &&
+                !movie.external_ids.imdb_id &&
+                !movie.external_ids.facebook_id &&
+                !movie.external_ids.instagram_id &&
+                !movie.external_ids.twitter_id
+            "
+          >
+            -
+          </p>
           <a target="_blank" v-if="movie.homepage" :href="movie.homepage">
-            <font-awesome-icon size="2x" class="mr-2" :icon="['fas', 'home']" />
+            <font-awesome-icon
+              fixedWidth
+              size="lg"
+              class="mr-2"
+              :icon="['fas', 'home']"
+            />
           </a>
           <a
             target="_blank"
             v-if="movie.external_ids.imdb_id != null"
             :href="`https://imdb.com/title/` + movie.external_ids.imdb_id"
-          > 
-            <font-awesome-icon size="2x" class="mr-4" :icon="['fab', 'imdb']" />
+          >
+            <font-awesome-icon
+              fixedWidth
+              size="lg"
+              class="mr-4"
+              :icon="['fab', 'imdb']"
+            />
           </a>
           <a
             target="_blank"
             v-if="movie.external_ids.facebook_id"
             :href="`https://facebook.com/` + movie.external_ids.facebook_id"
           >
-            <font-awesome-icon size="2x" class="mr-2" :icon="['fab', 'facebook-square']" />
+            <font-awesome-icon
+              fixedWidth
+              size="lg"
+              class="mr-2"
+              :icon="['fab', 'facebook-square']"
+            />
           </a>
           <a
             target="_blank"
             v-if="movie.external_ids.instagram_id"
             :href="`https://instagram.com/` + movie.external_ids.instagram_id"
           >
-            <font-awesome-icon size="2x" class="mr-2" :icon="['fab', 'instagram']" />
+            <font-awesome-icon
+              fixedWidth
+              size="lg"
+              class="mr-2"
+              :icon="['fab', 'instagram']"
+            />
           </a>
           <a
             target="_blank"
             v-if="movie.external_ids.twitter_id"
             :href="`https://twitter.com/` + movie.external_ids.twitter_id"
           >
-            <font-awesome-icon size="2x" :icon="['fab', 'twitter']" />
+            <font-awesome-icon
+              fixedWidth
+              size="lg"
+              :icon="['fab', 'twitter']"
+            />
           </a>
         </div>
       </div>
 
       <div class="w-full sm:w-3/4 px-6 sm:px-0 sm:ml-12 mt-12">
-        <h2 class="font-bold text-lg text-gray-600 mb-6" v-if="movie.tagline">{{ movie.tagline }}</h2>
+        <h2 class="font-bold text-lg text-gray-600 mb-6" v-if="movie.tagline">
+          {{ movie.tagline }}
+        </h2>
         <h1 class="font-heading text-xl text-gray-800 mb-2">Overview</h1>
         <p class="text-gray-500">{{ movie.overview }}</p>
 
         <Cast :movie="movie" />
 
         <SimilarMovies :movie="movie" />
-        {{movie}}
       </div>
     </div>
   </div>

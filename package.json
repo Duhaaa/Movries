@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "heroku-postbuild": "npm run build"
+    "start": "nuxt start"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",

@@ -1,10 +1,6 @@
 require("dotenv").config();
 
 export default {
-  generate: {
-    fallback: true
-  },
-  target: "static",
   mode: "universal",
   /*
    ** Headers of the page

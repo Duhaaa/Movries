@@ -28,7 +28,7 @@
     </div>
     <span @click="showMoreMovies" class="cursor-pointer text-blue-600"
       >{{ moreMovies ? "Show Less" : "Show More Similar Movies" }}
-      <font-awesome-icon class="ml-2" size="1x" :icon="['fas', 'arrow-right']"
+      <font-awesome-icon class="ml-2 align-middle" fixedWidth size="1x" :icon="['fas', 'arrow-right']"
     /></span>
   </div>
 </template>

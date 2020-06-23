@@ -27,7 +27,8 @@
     <span @click="showMoreCast" class="cursor-pointer text-blue-600"
       >{{ moreCast ? "Show Less" : "Show Full Cast" }}
       <font-awesome-icon
-        class="ml-2"
+      fixedWidth
+        class="ml-2 align-middle"
         size="1x"
         :icon="moreCast ? ['fas', 'arrow-left'] : ['fas', 'arrow-right']"
     /></span>

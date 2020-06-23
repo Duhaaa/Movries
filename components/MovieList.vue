@@ -21,7 +21,7 @@
             class="text-sm text-gray-500 mb-4 whitespace-no-wrap overflow-dots overflow-hidden"
           >{{movie.genre_ids | filterGenres}}</p>
           <div class="inline-block bg-yellow-400 rounded px-2 align-text-bottom">
-            <font-awesome-icon size="1x" class="align-baseline text-white" :icon="['fas', 'star']" style="vertical-align: baseline !important;" />
+            <font-awesome-icon size="1x" fixedWidth class="align-text-top text-white" :icon="['fas', 'star']" />
             <span class="text-gray-800 font-bold text-xl">{{ movie.vote_average }}</span>
           </div>
         </div>

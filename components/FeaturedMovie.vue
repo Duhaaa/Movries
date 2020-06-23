@@ -10,10 +10,10 @@
             <h1 class="font-heading text-white text-4xl inline-block mr-2">{{ featuredMovie.title }}</h1>
             <div class="inline-block bg-yellow-400 rounded px-2 align-text-bottom">
               <font-awesome-icon
-                class="text-base text-white"
+                class="align-text-top text-white"
                 size="1x"
+                fixedWidth
                 :icon="['fas', 'star']"
-                style="vertical-align: baseline !important;"
               />
               <span class="text-gray-800 font-bold text-xl">{{ featuredMovie.vote_average }}</span>
             </div>
@@ -26,7 +26,7 @@
               class="mt-4 bg-red-600 hover:bg-red-500 uppercase px-4 py-2 font-bold rounded inline-flex items-center"
             >
               Check it out
-              <font-awesome-icon class="ml-2" size="1x" :icon="['fas', 'arrow-right']" />
+              <font-awesome-icon fixedWidth class="ml-2" size="1x" :icon="['fas', 'arrow-right']" />
             </button>
           </div>
         </div>
