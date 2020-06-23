@@ -1,6 +1,6 @@
-# movries
+# Movries
 
-> Movies and series fetcher
+> Movies and Series fetcher using TMDb API and NuxtJS
 
 ## Build Setup
 
