@@ -1,0 +1,53 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fcfafa;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 12rem auto;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.4s;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+.overflow-dots {
+  text-overflow: ellipsis;
+}
+
+.poster-shadow {
+  box-shadow: 8px 8px 15px 2px rgba(0, 0, 0, 0.4);
+}
+
+.nuxt-link-exact-active {
+  color: white;
+}
+
+.card {
+  overflow: hidden;
+  transition: transform 0.4s, box-shadow 0.4s ease-out;
+}
+
+.card-img {
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.025);
+}
