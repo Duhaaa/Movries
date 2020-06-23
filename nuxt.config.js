@@ -1,10 +1,7 @@
 require("dotenv").config();
 
 export default {
-  generate: {
-    fallback: true
-  },
-  mode: "spa",
+  mode: "universal",
   /*
    ** Headers of the page
    */
