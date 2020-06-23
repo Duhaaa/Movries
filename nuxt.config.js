@@ -4,6 +4,7 @@ export default {
   // generate: {
   //   routes: ["/movies/:movie"]
   // },
+  target: 'static',
   mode: "universal",
   /*
    ** Headers of the page
