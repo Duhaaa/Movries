@@ -1,12 +1,17 @@
 require("dotenv").config();
+import axios from "axios";
 
 export default {
-  target: "static",
   generate: {
-    fallback: true
-  },
-  router: {
-    routeNameSplitter: '/'
+    routes() {
+      return axios
+        .get("https://api.themoviedb.org/3/discover/movie?api_key=" + process.env.apikey)
+        .then(res => {
+          return res.data.results.map(movie => {
+            return "/movies/" + movie.id;
+          });
+        });
+    }
   },
   mode: "universal",
   /*
