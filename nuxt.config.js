@@ -1,18 +1,19 @@
 require("dotenv").config();
-import axios from "axios";
+//import axios from "axios";
 
 export default {
-  generate: {
-    routes() {
-      return axios
-        .get("https://api.themoviedb.org/3/discover/movie?api_key=" + process.env.apikey)
-        .then(res => {
-          return res.data.results.map(movie => {
-            return "/movies/" + movie.id;
-          });
-        });
-    }
-  },
+  target: 'static',
+  // generate: {
+  //   routes() {
+  //     return axios
+  //       .get("https://api.themoviedb.org/3/discover/movie?api_key=" + process.env.apikey)
+  //       .then(res => {
+  //         return res.data.results.map(movie => {
+  //           return "/movies/" + movie.id;
+  //         });
+  //       });
+  //   }
+  // },
   mode: "universal",
   /*
    ** Headers of the page

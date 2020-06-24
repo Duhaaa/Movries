@@ -8,7 +8,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt build && nuxt export"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
@@ -20,7 +20,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "axios": "^0.19.2",
-    "nuxt": "^2.12.2",
+    "nuxt": "^2.13.1",
     "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
