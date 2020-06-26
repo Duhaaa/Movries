@@ -2,12 +2,11 @@
   <Loader v-if="$fetchState.pending" />
   <div v-else class="container mx-auto py-6 px-6 sm:px-0">
     <h1 class="font-heading text-4xl mb-4 text-gray-800">{{ title }}</h1>
-    
-    <div class="w-full mb-6">
-      <Featured :featured="featuredMovie" :type="type" />
-    </div>
 
-    <List :filtered="filteredMovies" :type="type" />
+    <div class="w-full mb-6">
+      <Featured :featured="featuredSerie" :type="type" />
+    </div>
+    <List :filtered="filteredSeries" :type="type" />
   </div>
 </template>
 
@@ -18,25 +17,25 @@ import Loader from "~/components/Loader";
 import { mapState } from "vuex";
 
 export default {
+  async fetch() {
+    await this.$store.dispatch("fetchOnAirSeries");
+  },
   head() {
     return {
-      title: this.title + ' - Movries'
-    }
+      title: this.title + " - Movries"
+    };
   },
   data() {
     return {
-      title: "Top Rated Movies"
+      title: "Series On Air"
     };
-  },
-  async fetch() {
-    await this.$store.dispatch("fetchTopRatedMovies");
   },
   computed: {
     ...mapState(["list", "type", "error"]),
-    featuredMovie() {
+    featuredSerie() {
       return this.list.results[0];
     },
-    filteredMovies() {
+    filteredSeries() {
       return this.list.results.slice(1);
     }
   },

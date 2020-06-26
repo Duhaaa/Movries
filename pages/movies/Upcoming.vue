@@ -1,18 +1,18 @@
 <template>
   <Loader v-if="$fetchState.pending" />
-  <div v-else class="container mx-auto py-6 px-6">
-    <h1 class="font-heading text-4xl ml-2 mb-4 text-gray-800">{{ title }}</h1>
+  <div v-else class="container mx-auto py-6 px-6 sm:px-0">
+    <h1 class="font-heading text-4xl mb-4 text-gray-800">{{ title }}</h1>
     <div class="w-full mb-6" >
-      <FeaturedMovie :featuredMovie="featuredMovie" />
+      <Featured :featured="featuredMovie" :type="type" />
     </div>
 
-    <MovieList :filteredMovies="filteredMovies" />
+    <List :filtered="filteredMovies" :type="type" />
   </div>
 </template>
 
 <script>
-import FeaturedMovie from "~/components/FeaturedMovie";
-import MovieList from "~/components/MovieList";
+import Featured from "~/components/Featured";
+import List from "~/components/List";
 import Loader from "~/components/Loader";
 import { mapState } from "vuex";
 
@@ -31,17 +31,17 @@ export default {
     await this.$store.dispatch("fetchUpcomingMovies");
   },
   computed: {
-    ...mapState(["movies", "loading", "error"]),
+    ...mapState(["list", "type", "error"]),
     featuredMovie() {
-      return this.movies.list.results[0];
+      return this.list.results[0];
     },
     filteredMovies() {
-      return this.movies.list.results.slice(1);
+      return this.list.results.slice(1);
     }
   },
   components: {
-    FeaturedMovie,
-    MovieList,
+    Featured,
+    List,
     Loader
   }
 };

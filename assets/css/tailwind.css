@@ -51,3 +51,18 @@ body {
 .card:hover {
   transform: scale(1.025);
 }
+
+.small-card {
+  overflow: hidden;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.hero-inner {
+  height: 16rem;
+}
+
+@media (min-width: 640px) {
+  .hero-inner {
+    height: 32rem;
+  }
+}

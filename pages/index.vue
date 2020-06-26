@@ -1,14 +1,13 @@
 <template>
   <Loader v-if="$fetchState.pending" />
-  <div v-else class="container mx-auto py-6 px-6">
-    <h1 class="font-heading text-4xl ml-2 mb-4 text-gray-800">{{ title }}</h1>
-
-    <MovieList :filteredMovies="trending.results" />
+  <div v-else class="container mx-auto py-6 px-6 sm:px-0">
+    <h1 class="font-heading text-4xl mb-4 text-gray-800">{{ title }}</h1>
+    <List :filtered="filteredNoPerson" />
   </div>
 </template>
 
 <script>
-import MovieList from "~/components/MovieList";
+import List from "~/components/List";
 import Loader from "~/components/Loader";
 import { mapState } from "vuex";
 
@@ -17,13 +16,18 @@ export default {
     await this.$store.dispatch("fetchTrending");
   },
   data() {
-    return { title: "Trending Movies" };
+    return { title: "Discover Movies & Series" };
   },
   computed: {
-    ...mapState(["trending", "loading", "error"])
+    ...mapState(["list", "error"]),
+    filteredNoPerson() {
+      return this.list.results.filter(f => {
+        return f.media_type != "person";
+      });
+    }
   },
   components: {
-    MovieList,
+    List,
     Loader
   }
 };

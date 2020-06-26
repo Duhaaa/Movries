@@ -1,26 +1,26 @@
 export const state = () => ({
-  movies: {
-    type: "",
-    list: []
-  },
+  list: {},
+  type: {},
   movie: {},
-  trending: {},
-  loading: true,
+  serie: {},
   error: {}
 });
 
 export const mutations = {
-  setMovies(state, movies) {
-    state.movies = movies;
-  },
   setMovie(state, movie) {
     state.movie = movie;
   },
-  setTrending(state, trending) {
-    state.trending = trending;
+  setSeries(state, series) {
+    state.series = series;
   },
-  changeLoadingState(state, loading) {
-    state.loading = loading;
+  setSerie(state, serie) {
+    state.serie = serie;
+  },
+  setList(state, list) {
+    state.list = list;
+  },
+  setType(state, type) {
+    state.type = type;
   },
   setError(state, error) {
     state.error = error;
@@ -33,8 +33,9 @@ export const actions = {
     await this.$api
       .get("/movie/popular")
       .then(res => {
-        commit("setMovies", { type: "popular", list: res.data });
-        commit("changeLoadingState", false);
+        commit("setList", res.data);
+        commit("setType", "movie")
+        //commit("changeLoadingState", false);
       })
       .catch(e => commit("setError", e));
   },
@@ -43,8 +44,9 @@ export const actions = {
     await this.$api
       .get("/movie/top_rated")
       .then(res => {
-        commit("setMovies", { type: "top_rated", list: res.data });
-        commit("changeLoadingState", false);
+        commit("setList", res.data);
+        commit("setType", "movie")
+        //commit("changeLoadingState", false);
       })
       .catch(e => commit("setError", e));
   },
@@ -53,8 +55,8 @@ export const actions = {
     await this.$api
       .get("/movie/upcoming")
       .then(res => {
-        commit("setMovies", { type: "upcoming", list: res.data });
-        commit("changeLoadingState", false);
+        commit("setList", res.data);
+        commit("setType", "movie")
       })
       .catch(e => commit("setError", e));
   },
@@ -65,18 +67,49 @@ export const actions = {
       .get(`/movie/${id + options}`)
       .then(res => {
         commit("setMovie", res.data);
-        commit("changeLoadingState", false);
+        //commit("changeLoadingState", false);
       })
       .catch(e => commit("setError", e));
   },
   // Trending Movies & Series
   async fetchTrending({commit}) {
     await this.$api
-      .get("/trending/movie/day")
+      .get("/trending/all/day")
       .then(res => {
-        commit("setTrending", res.data);
-        commit("changeLoadingState", false)
+        commit("setList", res.data);
+        //commit("changeLoadingState", false)
       })
       .catch(e => commit("setError", e));
-  }
+  },
+  // Single Serie
+  async fetchSerieById({commit}, id) {
+    const options = "?append_to_response=credits,external_ids"
+    await this.$api
+      .get(`/tv/${id + options}`)
+      .then(res => {
+        commit("setSerie", res.data);
+        //commit("changeLoadingState", false);
+      })
+      .catch(e => commit("setError", e))
+  },
+  // Popular Series
+  async fetchPopularSeries({ commit }) {
+    await this.$api
+      .get("/tv/popular")
+      .then(res => {
+        commit("setList", res.data);
+        commit("setType", "serie")
+      })
+      .catch(e => commit("setError", e));
+  },
+  // Series On Air
+  async fetchOnAirSeries({ commit }) {
+    await this.$api
+      .get("/tv/on_the_air")
+      .then(res => {
+        commit("setList", res.data);
+        commit("setType", "serie")
+      })
+      .catch(e => commit("setError", e));
+  },
 };

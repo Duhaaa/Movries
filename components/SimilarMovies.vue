@@ -1,35 +1,45 @@
 <template>
   <div v-if="movie.similar.total_results > 0" class="my-10">
-    <h3 class="font-heading text-lg text-gray-800 mb-2">
-      Similar Movies
-    </h3>
-    <div class="flex flex-wrap">
-      <nuxt-link
-        :to="'/movies/' + sim.id"
-        tag="div"
-        class="mb-6 shadow-md hover:shadow-xl rounded mr-4 cursor-pointer cast-card"
-        style="width: 138px"
+    <h3 class="font-heading text-lg text-gray-800 mb-2">Similar Movies</h3>
+    <div class="flex flex-wrap -mx-2">
+      <div
+        class="w-1/2 sm:w-1/6 mb-6 px-2"
         v-for="sim in movie.similar.results.slice(0, amountOfMovies)"
         :key="sim.id"
-      >
+      ><nuxt-link to="" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer">
+        <div class="overflow-hidden">
         <img
           :src="
             sim.poster_path != null
-              ? 'https://image.tmdb.org/t/p/w154/' + sim.poster_path
-              : 'https://via.placeholder.com/138x175?text=MOVRIES'
+              ? 'https://image.tmdb.org/t/p/w185/' +
+                sim.poster_path
+              : 'https://via.placeholder.com/185x278?text=MOVRIES'
           "
           :alt="sim.title"
-          class="overflow-hidden rounded-t"
+          class="block rounded-t"
         />
-        <div class="p-4">
-          <span class="font-semibold block overflow-hidden overflow-dots">{{ sim.title }}</span>
         </div>
-      </nuxt-link>
+        <div class="p-4">
+          <span
+            class="font-semibold text-gray-800 block whitespace-no-wrap overflow-hidden overflow-dots"
+          >{{ sim.title }}</span>
+        </div>
+        </nuxt-link>
+      </div>
     </div>
-    <span @click="showMoreMovies" class="cursor-pointer text-blue-600"
-      >{{ moreMovies ? "Show Less" : "Show More Similar Movies" }}
-      <font-awesome-icon class="ml-2 align-middle" fixedWidth size="1x" :icon="['fas', 'arrow-right']"
-    /></span>
+    <span
+      v-if="this.movie.similar.results.length > 6"
+      @click="showMoreMovies"
+      class="cursor-pointer text-blue-600"
+    >
+      {{ moreMovies ? "Show Less" : "Show More Similar Movies" }}
+      <font-awesome-icon
+        fixedWidth
+        class="ml-2 align-middle"
+        size="1x"
+        :icon="moreMovies ? ['fas', 'arrow-left'] : ['fas', 'arrow-right']"
+      />
+    </span>
   </div>
 </template>
 

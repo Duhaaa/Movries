@@ -1,6 +1,6 @@
 <template>
   <header class="bg-gray-900 font-semibold sticky top-0 z-50">
-    <div class="container mx-auto py-4 px-8 flex justify-between">
+    <div class="container mx-auto py-4 flex justify-between px-6 sm:px-0">
       <ul class="flex items-center">
         <li class="mr-6">
           <nuxt-link
@@ -24,7 +24,7 @@
                 to="/movies/popular"
                 class="py-2 px-4 bg-white hover:bg-gray-800 hover:text-gray-400 block whitespace-no-wrap rounded-t"
                 exact-active-class="dropdown-active"
-                href="#"
+               
                 >Popular</nuxt-link
               >
             </li>
@@ -33,7 +33,7 @@
                 to="/movies/top-rated"
                 class="py-2 px-4 bg-white hover:bg-gray-800 hover:text-gray-400 block whitespace-no-wrap"
                 exact-active-class="dropdown-active"
-                href="#"
+                
                 >Top Rated</nuxt-link
               >
             </li>
@@ -42,18 +42,40 @@
                 to="/movies/upcoming"
                 class="py-2 px-4 bg-white hover:bg-gray-800 hover:text-gray-400 block whitespace-no-wrap rounded-b"
                 exact-active-class="dropdown-active"
-                href="#"
+                
                 >Upcoming</nuxt-link
               >
             </li>
           </ul>
         </li>
-        <li class="mr-6">
+        <li class="mr-6 py-2 dropdown relative inline-block cursor-pointer">
           <nuxt-link
-            to="/series/"
-            class="text-gray-500 no-underline hover:text-gray-400"
+            to="/series/popular"
+            class="text-gray-500 no-underline pointer-events-none hover:text-gray-400"
+            active-class="dropdown-parent-active"
             >SERIES</nuxt-link
+          ><ul
+            class="dropdown-menu bg-white border-transparent rounded shadow-xl mt-1 hidden absolute text-gray-500"
           >
+            <li>
+              <nuxt-link
+                to="/series/popular"
+                class="py-2 px-4 bg-white hover:bg-gray-800 hover:text-gray-400 block whitespace-no-wrap rounded-t"
+                exact-active-class="dropdown-active"
+                
+                >Popular</nuxt-link
+              >
+            </li>
+            <li>
+              <nuxt-link
+                to="/series/on-air"
+                class="py-2 px-4 bg-white hover:bg-gray-800 hover:text-gray-400 block whitespace-no-wrap rounded-b"
+                exact-active-class="dropdown-active"
+                
+                >On Air</nuxt-link
+              >
+            </li>
+          </ul>
         </li>
       </ul>
       <div class="py-2">
