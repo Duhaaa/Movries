@@ -3,10 +3,10 @@
     <h3 class="font-heading text-lg text-gray-800 mb-2">Similar Movies</h3>
     <div class="flex flex-wrap -mx-2">
       <div
-        class="w-1/2 sm:w-1/6 mb-6 px-2"
+        class="w-1/2 sm:w-1/3 lg:w-1/6 mb-6 px-2"
         v-for="sim in movie.similar.results.slice(0, amountOfMovies)"
         :key="sim.id"
-      ><nuxt-link to="" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer">
+      ><nuxt-link :to="'/movies/' + sim.id" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer small-card">
         <div class="overflow-hidden">
         <img
           :src="

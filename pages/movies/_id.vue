@@ -8,8 +8,8 @@
       "
     >
       <div class="hero-inner container mx-auto flex items-end pb-2">
-        <div class="hidden sm:block w-1/4"></div>
-        <div class="w-full px-6 sm:px-0 sm:w-3/4 sm:ml-12">
+        <div class="hidden md:block w-1/4"></div>
+        <div class="w-full px-6 md:w-3/4 md:ml-12">
           <h1 class="font-heading text-white text-4xl">
             {{ movie.title }}
             <span class="font-sans text-2xl align-middle">
@@ -17,7 +17,7 @@
             </span>
           </h1>
           <div class="text-white">
-            <span class="mr-8" v-if="movie.runtime > 0">
+            <span class="mr-8 block md:inline" v-if="movie.runtime > 0">
               <font-awesome-icon class="align-text-bottom" fixedWidth size="1x" :icon="['far', 'clock']" />
               {{ movie.runtime }} min
             </span>
@@ -30,17 +30,17 @@
       </div>
     </div>
 
-    <div class="container mx-auto sm:flex">
+    <div class="container mx-auto md:flex px-6">
       <div
-        class="w-full px-6 mt-6 sm:px-0 sm:w-1/4 sm:-mt-20 flex flex-wrap sm:block sm:flex-no-wrap"
+        class="w-full mt-6 md:w-1/4 md:-mt-20 flex flex-wrap md:block md:flex-no-wrap"
       >
         <img
           :src="'https://image.tmdb.org/t/p/w300/' + movie.poster_path"
           :alt="movie.title"
-          class="mb-8 poster-shadow rounded hidden sm:inline-block w-full sm:w-auto"
+          class="mb-12 poster-shadow rounded hidden md:inline-block w-full md:w-auto"
         />
-        <div class="mb-6 w-1/2 sm:w-auto">
-          <p class="font-bold">TMDb Rating</p>
+        <div class="mb-6 w-1/2 md:w-auto">
+          <p class="font-bold text-gray-800">TMDb Rating</p>
           <div
             class="mt-2 inline-block bg-yellow-400 rounded px-2 align-text-bottom"
           >
@@ -56,9 +56,9 @@
           </div>
         </div>
 
-        <div class="mb-6 w-1/2 sm:w-auto">
-          <p class="font-bold">Release Date</p>
-          <p>
+        <div class="mb-6 w-1/2 md:w-auto">
+          <p class="font-bold text-gray-800">Release Date</p>
+          <p class="text-gray-500">
             {{
               stringToDate(movie.release_date, {
                 day: "numeric",
@@ -69,23 +69,23 @@
           </p>
         </div>
 
-        <div class="mb-6 w-1/2 sm:w-auto">
-          <p class="font-bold">Budget</p>
-          <p>
+        <div class="mb-6 w-1/2 md:w-auto">
+          <p class="font-bold text-gray-800">Budget</p>
+          <p class="text-gray-500">
             {{ movie.budget > 0 ? "$" + movie.budget.toLocaleString() : "-" }}
           </p>
         </div>
 
-        <div class="mb-6 w-1/2 sm:w-auto">
-          <p class="font-bold">Revenue</p>
-          <p>
+        <div class="mb-6 w-1/2 md:w-auto">
+          <p class="font-bold text-gray-800">Revenue</p>
+          <p class="text-gray-500">
             {{ movie.revenue > 0 ? "$" + movie.revenue.toLocaleString() : "-" }}
           </p>
         </div>
 
-        <div class="mb-6 w-full sm:w-auto">
-          <p class="font-bold mb-1">Links</p>
-          <p
+        <div class="mb-6 w-full md:w-auto">
+          <p class="font-bold mb-1 text-gray-800">Links</p>
+          <p class="text-gray-500"
             v-if="
               !movie.homepage &&
                 !movie.external_ids.imdb_id &&
@@ -99,8 +99,8 @@
           <a target="_blank" v-if="movie.homepage" :href="movie.homepage">
             <font-awesome-icon
               fixedWidth
-              size="lg"
-              class="mr-2"
+              size="2x"
+              class="text-blue-500"
               :icon="['fas', 'home']"
             />
           </a>
@@ -111,8 +111,8 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="lg"
-              class="mr-4"
+              size="2x"
+              class="text-blue-500"
               :icon="['fab', 'imdb']"
             />
           </a>
@@ -123,8 +123,8 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="lg"
-              class="mr-2"
+              size="2x"
+              class="text-blue-500"
               :icon="['fab', 'facebook-square']"
             />
           </a>
@@ -135,8 +135,8 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="lg"
-              class="mr-2"
+              size="2x"
+              class="text-blue-500"
               :icon="['fab', 'instagram']"
             />
           </a>
@@ -147,19 +147,20 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="lg"
+              size="2x"
+              class="text-blue-500"
               :icon="['fab', 'twitter']"
             />
           </a>
         </div>
       </div>
 
-      <div class="w-full sm:w-3/4 px-6 sm:px-0 sm:ml-12 mt-6 sm:mt-12">
+      <div class="w-full md:w-3/4 md:ml-12 mt-6 md:mt-12">
         <h2 class="font-bold text-lg text-gray-600 mb-6" v-if="movie.tagline">
           {{ movie.tagline }}
         </h2>
         <h1 class="font-heading text-xl text-gray-800 mb-2">Overview</h1>
-        <p class="text-gray-500">{{ movie.overview }}</p>
+        <p class="text-gray-500 whitespace-pre-line">{{ movie.overview }}</p>
 
         <Cast :list="movie" />
 

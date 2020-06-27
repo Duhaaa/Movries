@@ -1,6 +1,6 @@
 <template>
   <Loader v-if="$fetchState.pending" />
-  <div v-else class="container mx-auto py-6 px-6 sm:px-0">
+  <div v-else class="container mx-auto py-6 px-6">
     <h1 class="font-heading text-4xl mb-4 text-gray-800">{{ title }}</h1>
     <List :filtered="filteredNoPerson" />
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-wrap -mx-2">
-    <div class="w-1/2 sm:w-1/4 mb-6 px-2" v-for="movie in filtered" :key="movie.id">
+    <div class="w-1/2 sm:w-1/3 md:w-1/4 mb-6 px-2" v-for="movie in filtered" :key="movie.id">
       <nuxt-link
         tag="div"
         :to="movie.media_type == 'tv' || type == 'serie' ? '/series/' + movie.id: '/movies/' + movie.id"
@@ -13,7 +13,7 @@
             class="block rounded-t"
           />
         </div>
-        <div class="card-info p-4 sm:p-6">
+        <div class="card-info p-4">
           <h2
             class="whitespace-no-wrap overflow-dots overflow-hidden font-semibold text-gray-800 text-lg mb-1"
           >{{ movie.title ? movie.title : movie.name }}</h2>

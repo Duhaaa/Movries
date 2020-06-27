@@ -3,15 +3,13 @@ export const state = () => ({
   type: {},
   movie: {},
   serie: {},
+  person: {},
   error: {}
 });
 
 export const mutations = {
   setMovie(state, movie) {
     state.movie = movie;
-  },
-  setSeries(state, series) {
-    state.series = series;
   },
   setSerie(state, serie) {
     state.serie = serie;
@@ -21,6 +19,9 @@ export const mutations = {
   },
   setType(state, type) {
     state.type = type;
+  },
+  setPerson(state, person) {
+    state.person = person;
   },
   setError(state, error) {
     state.error = error;
@@ -35,7 +36,6 @@ export const actions = {
       .then(res => {
         commit("setList", res.data);
         commit("setType", "movie")
-        //commit("changeLoadingState", false);
       })
       .catch(e => commit("setError", e));
   },
@@ -46,7 +46,6 @@ export const actions = {
       .then(res => {
         commit("setList", res.data);
         commit("setType", "movie")
-        //commit("changeLoadingState", false);
       })
       .catch(e => commit("setError", e));
   },
@@ -67,7 +66,6 @@ export const actions = {
       .get(`/movie/${id + options}`)
       .then(res => {
         commit("setMovie", res.data);
-        //commit("changeLoadingState", false);
       })
       .catch(e => commit("setError", e));
   },
@@ -77,7 +75,6 @@ export const actions = {
       .get("/trending/all/day")
       .then(res => {
         commit("setList", res.data);
-        //commit("changeLoadingState", false)
       })
       .catch(e => commit("setError", e));
   },
@@ -88,7 +85,6 @@ export const actions = {
       .get(`/tv/${id + options}`)
       .then(res => {
         commit("setSerie", res.data);
-        //commit("changeLoadingState", false);
       })
       .catch(e => commit("setError", e))
   },
@@ -111,5 +107,15 @@ export const actions = {
         commit("setType", "serie")
       })
       .catch(e => commit("setError", e));
+  },
+  // Single Person
+  async fetchPersonById({commit}, id) {
+    const options = "?append_to_response=combined_credits,external_ids"
+    await this.$api
+      .get(`/person/${id + options}`)
+      .then(res => {
+        commit("setPerson", res.data);
+      })
+      .catch(e => commit("setError", e))
   },
 };

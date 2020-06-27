@@ -12,6 +12,14 @@ body {
   background-color: #fcfafa;
 }
 
+a, button {
+  outline: 0;
+}
+
+::-moz-focus-inner, :focus {
+  border: 0;
+}
+
 .main {
   display: grid;
   grid-template-columns: 12rem auto;
@@ -53,12 +61,11 @@ body {
 }
 
 .small-card {
-  overflow: hidden;
   transition: box-shadow 0.2s ease-out;
 }
 
 .hero-inner {
-  height: 16rem;
+  min-height: 16rem;
 }
 
 @media (min-width: 640px) {

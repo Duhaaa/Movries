@@ -1,34 +1,42 @@
 <template>
   <div v-if="list.seasons.length > 0" class="my-10">
     <h3 class="font-heading text-lg text-gray-800 mb-2">Seasons</h3>
-    <div class="flex flex-wrap">
-      <nuxt-link
-        :to="'/movies/' + season.id"
-        tag="div"
-        class="mb-6 shadow-md hover:shadow-xl rounded mr-4 cursor-pointer small-card"
-        style="width: 138px"
+    <div class="flex flex-wrap -mx-2">
+      <div
+        class="w-1/2 sm:w-1/3 lg:w-1/6 mb-6 px-2"
         v-for="season in list.seasons.slice(0, amountOfSeasons)"
         :key="season.id"
       >
-        <img
-          :src="
+        <nuxt-link to tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer small-card">
+          <div class="overflow-hidden">
+            <img
+              :src="
             season.poster_path != null
-              ? 'https://image.tmdb.org/t/p/w154/' + season.poster_path
-              : 'https://via.placeholder.com/138x175?text=MOVRIES'
+              ? 'https://image.tmdb.org/t/p/w185/' +
+                season.poster_path
+              : 'https://via.placeholder.com/185x278?text=MOVRIES'
           "
-          :alt="season.name"
-          class="overflow-hidden rounded-t"
-        />
-        <div class="p-4">
-          <span class="font-semibold block overflow-hidden overflow-dots">{{ season.name }}</span>
-        </div>
-      </nuxt-link>
+              :alt="season.name"
+              class="block rounded-t"
+            />
+          </div>
+          <div class="p-4">
+            <span
+              class="font-semibold text-gray-800 block whitespace-no-wrap overflow-hidden overflow-dots"
+            >{{ season.name }}</span>
+          </div>
+        </nuxt-link>
+      </div>
     </div>
-    <span v-if="this.list.seasons.length > 6" @click="showMoreSeasons" class="cursor-pointer text-blue-600">
+    <span
+      v-if="this.list.seasons.length > 6"
+      @click="showMoreSeasons"
+      class="cursor-pointer text-blue-600"
+    >
       {{ moreSeasons ? "Show Less" : "Show More Seasons" }}
       <font-awesome-icon
-        class="ml-2 align-middle"
         fixedWidth
+        class="ml-2 align-middle"
         size="1x"
         :icon="moreSeasons ? ['fas', 'arrow-left'] : ['fas', 'arrow-right']"
       />

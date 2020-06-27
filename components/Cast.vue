@@ -3,10 +3,10 @@
     <h3 class="font-heading text-lg text-gray-800 mb-2">Cast</h3>
     <div class="flex flex-wrap -mx-2">
       <div
-        class="w-1/2 sm:w-1/6 mb-6 px-2"
+        class="w-1/2 sm:w-1/3 lg:w-1/6 mb-6 px-2"
         v-for="cast in list.credits.cast.slice(0, amountOfCast)"
-        :key="cast.cast_id"
-      ><nuxt-link to="" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer">
+        :key="cast.id"
+      ><nuxt-link :to="'/person/' + cast.id" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer small-card">
         <div class="overflow-hidden">
         <img
           :src="

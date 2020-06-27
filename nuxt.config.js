@@ -2,18 +2,7 @@ require("dotenv").config();
 //import axios from "axios";
 
 export default {
-  target: 'static',
-  // generate: {
-  //   routes() {
-  //     return axios
-  //       .get("https://api.themoviedb.org/3/discover/movie?api_key=" + process.env.apikey)
-  //       .then(res => {
-  //         return res.data.results.map(movie => {
-  //           return "/movies/" + movie.id;
-  //         });
-  //       });
-  //   }
-  // },
+  target: "static",
   mode: "universal",
   /*
    ** Headers of the page
@@ -26,7 +15,43 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || ""
+        content: "Movies and Series fetcher using TMDb API and NuxtJS."
+      },
+      {
+        hid: "og:description",
+        name: "og:description",
+        content:
+          "Movies and Series fetcher using TMDb API and NuxtJS. Created by Duha."
+      },
+      {
+        hid: "og:site_name",
+        name: "og:site_name",
+        content: "Movries"
+      },
+      {
+        hid: "og:type",
+        name: "og:type",
+        content: "website"
+      },
+      {
+        hid: "og:title",
+        name: "og:title",
+        content: "Movries - Movies and Series fetcher"
+      },
+      {
+        hid: "og:url",
+        name: "og:url",
+        content: "http://movries.surge.sh"
+      },
+      {
+        hid: "og:image",
+        name: "og:image",
+        content: "/movries.jpg"
+      },
+      {
+        hid: "og:locale",
+        name: "og:locale",
+        content: "en"
       }
     ],
     link: [
