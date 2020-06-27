@@ -82,7 +82,7 @@
         <font-awesome-icon
           fixedWidth
           class="align-middle text-gray-500 hover:text-gray-400 cursor-pointer"
-          size="1x"
+          size="sm"
           :icon="['fas', 'search']"
         />
       </div>

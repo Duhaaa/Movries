@@ -36,7 +36,7 @@
       <font-awesome-icon
         fixedWidth
         class="ml-2 align-middle"
-        size="1x"
+        size="sm"
         :icon="moreMovies ? ['fas', 'arrow-left'] : ['fas', 'arrow-right']"
       />
     </span>

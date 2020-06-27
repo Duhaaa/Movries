@@ -20,39 +20,39 @@ export default {
 
       {
         hid: "og:type",
-        name: "og:type",
+        property: "og:type",
         content: "website"
       },
       {
         hid: "og:url",
-        name: "og:url",
+        property: "og:url",
         content: "http://movries.surge.sh"
       },
 
       {
         hid: "og:site_name",
-        name: "og:site_name",
+        property: "og:site_name",
         content: "Movries"
       },
       {
         hid: "og:title",
-        name: "og:title",
+        property: "og:title",
         content: "Movries - Movies and Series fetcher"
       },
       {
         hid: "og:description",
-        name: "og:description",
+        property: "og:description",
         content:
           "Movies and Series fetcher using TMDb API and NuxtJS. Created by Duha."
       },
       {
         hid: "og:image",
-        name: "og:image",
-        content: "/movries.jpg"
+        property: "og:image",
+        content: "http://movries.surge.sh/movries.jpg"
       },
       {
         hid: "og:locale",
-        name: "og:locale",
+        property: "og:locale",
         content: "en"
       }
     ],

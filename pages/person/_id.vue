@@ -52,7 +52,7 @@
                 !person.external_ids.twitter_id"
         >-</p>
         <a target="_blank" v-if="person.homepage" :href="person.homepage">
-          <font-awesome-icon fixedWidth size="2x" class="text-blue-500" :icon="['fas', 'home']" />
+          <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fas', 'home']" />
         </a>
 
         <a
@@ -62,8 +62,8 @@
         >
           <font-awesome-icon
             fixedWidth
-            size="2x"
-            class="-ml-1 text-blue-500"
+            size="lg"
+            class="text-blue-500"
             :icon="['fab', 'imdb']"
           />
         </a>
@@ -74,7 +74,7 @@
         >
           <font-awesome-icon
             fixedWidth
-            size="2x"
+            size="lg"
             class="text-blue-500"
             :icon="['fab', 'facebook-square']"
           />
@@ -86,7 +86,7 @@
         >
           <font-awesome-icon
             fixedWidth
-            size="2x"
+            size="lg"
             class="text-blue-500"
             :icon="['fab', 'instagram']"
           />
@@ -96,7 +96,7 @@
           v-if="person.external_ids.twitter_id"
           :href="`https://twitter.com/` + person.external_ids.twitter_id"
         >
-          <font-awesome-icon fixedWidth size="2x" class="text-blue-500" :icon="['fab', 'twitter']" />
+          <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fab', 'twitter']" />
         </a>
       </div>
     </div>

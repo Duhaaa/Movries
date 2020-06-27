@@ -12,8 +12,8 @@
         >{{ type == 'movie' ? featured.title : featured.name }}</h1>
         <div class="inline-block bg-yellow-400 rounded px-2 align-text-bottom">
           <font-awesome-icon
-            class="align-text-top text-white"
-            size="1x"
+            class="align-middle text-white"
+            size="sm"
             fixedWidth
             :icon="['fas', 'star']"
           />

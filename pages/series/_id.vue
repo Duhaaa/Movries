@@ -92,7 +92,7 @@
                 !serie.external_ids.twitter_id"
           >-</p>
           <a target="_blank" v-if="serie.homepage" :href="serie.homepage">
-            <font-awesome-icon fixedWidth size="2x" class="text-blue-500" :icon="['fas', 'home']" />
+            <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fas', 'home']" />
           </a>
           
           <a
@@ -102,7 +102,7 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="2x"
+              size="lg"
               class="text-blue-500"
               :icon="['fab', 'imdb']"
             />
@@ -114,7 +114,7 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="2x"
+              size="lg"
               class="text-blue-500"
               :icon="['fab', 'facebook-square']"
             />
@@ -126,7 +126,7 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="2x"
+              size="lg"
               class="text-blue-500"
               :icon="['fab', 'instagram']"
             />
@@ -138,7 +138,7 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="2x"
+              size="lg"
               class="text-blue-500"
               :icon="['fab', 'twitter']"
             />

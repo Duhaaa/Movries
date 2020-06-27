@@ -12,13 +12,18 @@
         <div class="w-full px-6 md:w-3/4 md:ml-12">
           <h1 class="font-heading text-white text-4xl">
             {{ movie.title }}
-            <span class="font-sans text-2xl align-middle">
-              ({{ stringToDate(movie.release_date, { year: "numeric" }) }})
-            </span>
+            <span
+              class="font-sans text-2xl align-middle"
+            >({{ stringToDate(movie.release_date, { year: "numeric" }) }})</span>
           </h1>
           <div class="text-white">
             <span class="mr-8 block md:inline" v-if="movie.runtime > 0">
-              <font-awesome-icon class="align-text-bottom" fixedWidth size="1x" :icon="['far', 'clock']" />
+              <font-awesome-icon
+                class="align-text-bottom"
+                fixedWidth
+                size="1x"
+                :icon="['far', 'clock']"
+              />
               {{ movie.runtime }} min
             </span>
             <span v-for="(genre, index) in movie.genres" :key="genre.id">
@@ -31,9 +36,7 @@
     </div>
 
     <div class="container mx-auto md:flex px-6">
-      <div
-        class="w-full mt-6 md:w-1/4 md:-mt-20 flex flex-wrap md:block md:flex-no-wrap"
-      >
+      <div class="w-full mt-6 md:w-1/4 md:-mt-20 flex flex-wrap md:block md:flex-no-wrap">
         <img
           :src="'https://image.tmdb.org/t/p/w300/' + movie.poster_path"
           :alt="movie.title"
@@ -41,18 +44,14 @@
         />
         <div class="mb-6 w-1/2 md:w-auto">
           <p class="font-bold text-gray-800">TMDb Rating</p>
-          <div
-            class="mt-2 inline-block bg-yellow-400 rounded px-2 align-text-bottom"
-          >
+          <div class="mt-2 inline-block bg-yellow-400 rounded px-2 align-text-bottom">
             <font-awesome-icon
               class="align-text-top text-white"
               fixedWidth
               size="1x"
               :icon="['fas', 'star']"
             />
-            <span class="text-gray-800 font-bold text-xl">
-              {{ movie.vote_average }}
-            </span>
+            <span class="text-gray-800 font-bold text-xl">{{ movie.vote_average }}</span>
           </div>
         </div>
 
@@ -60,32 +59,33 @@
           <p class="font-bold text-gray-800">Release Date</p>
           <p class="text-gray-500">
             {{
-              stringToDate(movie.release_date, {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-              })
+            stringToDate(movie.release_date, {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+            })
             }}
           </p>
         </div>
 
         <div class="mb-6 w-1/2 md:w-auto">
           <p class="font-bold text-gray-800">Budget</p>
-          <p class="text-gray-500">
-            {{ movie.budget > 0 ? "$" + movie.budget.toLocaleString() : "-" }}
-          </p>
+          <p
+            class="text-gray-500"
+          >{{ movie.budget > 0 ? "$" + movie.budget.toLocaleString() : "-" }}</p>
         </div>
 
         <div class="mb-6 w-1/2 md:w-auto">
           <p class="font-bold text-gray-800">Revenue</p>
-          <p class="text-gray-500">
-            {{ movie.revenue > 0 ? "$" + movie.revenue.toLocaleString() : "-" }}
-          </p>
+          <p
+            class="text-gray-500"
+          >{{ movie.revenue > 0 ? "$" + movie.revenue.toLocaleString() : "-" }}</p>
         </div>
 
         <div class="mb-6 w-full md:w-auto">
           <p class="font-bold mb-1 text-gray-800">Links</p>
-          <p class="text-gray-500"
+          <p
+            class="text-gray-500"
             v-if="
               !movie.homepage &&
                 !movie.external_ids.imdb_id &&
@@ -93,28 +93,16 @@
                 !movie.external_ids.instagram_id &&
                 !movie.external_ids.twitter_id
             "
-          >
-            -
-          </p>
+          >-</p>
           <a target="_blank" v-if="movie.homepage" :href="movie.homepage">
-            <font-awesome-icon
-              fixedWidth
-              size="2x"
-              class="text-blue-500"
-              :icon="['fas', 'home']"
-            />
+            <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fas', 'home']" />
           </a>
           <a
             target="_blank"
             v-if="movie.external_ids.imdb_id != null"
             :href="`https://imdb.com/title/` + movie.external_ids.imdb_id"
           >
-            <font-awesome-icon
-              fixedWidth
-              size="2x"
-              class="text-blue-500"
-              :icon="['fab', 'imdb']"
-            />
+            <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fab', 'imdb']" />
           </a>
           <a
             target="_blank"
@@ -123,7 +111,7 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="2x"
+              size="lg"
               class="text-blue-500"
               :icon="['fab', 'facebook-square']"
             />
@@ -135,7 +123,7 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="2x"
+              size="lg"
               class="text-blue-500"
               :icon="['fab', 'instagram']"
             />
@@ -147,7 +135,7 @@
           >
             <font-awesome-icon
               fixedWidth
-              size="2x"
+              size="lg"
               class="text-blue-500"
               :icon="['fab', 'twitter']"
             />
@@ -156,9 +144,7 @@
       </div>
 
       <div class="w-full md:w-3/4 md:ml-12 mt-6 md:mt-12">
-        <h2 class="font-bold text-lg text-gray-600 mb-6" v-if="movie.tagline">
-          {{ movie.tagline }}
-        </h2>
+        <h2 class="font-bold text-lg text-gray-600 mb-6" v-if="movie.tagline">{{ movie.tagline }}</h2>
         <h1 class="font-heading text-xl text-gray-800 mb-2">Overview</h1>
         <p class="text-gray-500 whitespace-pre-line">{{ movie.overview }}</p>
 
@@ -209,5 +195,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
