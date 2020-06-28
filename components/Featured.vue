@@ -12,7 +12,7 @@
         >{{ type == 'movie' ? featured.title : featured.name }}</h1>
         <div class="inline-block bg-yellow-400 rounded px-2 align-text-bottom">
           <font-awesome-icon
-            class="align-middle text-white"
+            class="align-text-top text-white"
             size="sm"
             fixedWidth
             :icon="['fas', 'star']"
@@ -31,7 +31,7 @@
           class="mt-4 hidden sm:block bg-red-600 hover:bg-red-500 uppercase px-4 py-2 font-bold rounded inline-flex items-center"
         >
           Check it out
-          <font-awesome-icon fixedWidth class="ml-2" size="1x" :icon="['fas', 'arrow-right']" />
+          <font-awesome-icon fixedWidth class="ml-2 align-middle" size="1x" :icon="['fas', 'arrow-right']" />
         </button>
       </div>
     </div>

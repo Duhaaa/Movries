@@ -52,7 +52,12 @@
                 !person.external_ids.twitter_id"
         >-</p>
         <a target="_blank" v-if="person.homepage" :href="person.homepage">
-          <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fas', 'home']" />
+          <font-awesome-icon
+            fixedWidth
+            size="lg"
+            class="mr-2 text-blue-500"
+            :icon="['fas', 'home']"
+          />
         </a>
 
         <a
@@ -63,7 +68,7 @@
           <font-awesome-icon
             fixedWidth
             size="lg"
-            class="text-blue-500"
+            class="mr-2 text-blue-500"
             :icon="['fab', 'imdb']"
           />
         </a>
@@ -75,7 +80,7 @@
           <font-awesome-icon
             fixedWidth
             size="lg"
-            class="text-blue-500"
+            class="mr-2 text-blue-500"
             :icon="['fab', 'facebook-square']"
           />
         </a>
@@ -87,7 +92,7 @@
           <font-awesome-icon
             fixedWidth
             size="lg"
-            class="text-blue-500"
+            class="mr-2 text-blue-500"
             :icon="['fab', 'instagram']"
           />
         </a>

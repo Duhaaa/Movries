@@ -36,9 +36,7 @@
     </div>
 
     <div class="container mx-auto md:flex px-6">
-      <div
-        class="w-full mt-6 md:w-1/4 md:-mt-20 flex flex-wrap md:block md:flex-no-wrap"
-      >
+      <div class="w-full mt-6 md:w-1/4 md:-mt-20 flex flex-wrap md:block md:flex-no-wrap">
         <img
           :src="'https://image.tmdb.org/t/p/w300/' + serie.poster_path"
           :alt="serie.name"
@@ -74,16 +72,14 @@
         <div class="mb-6 w-1/2 md:w-auto">
           <p class="font-bold text-gray-800">Network</p>
           <p v-for="network in serie.networks" :key="network.id">
-            <img
-              :src="'https://image.tmdb.org/t/p/h15/' + network.logo_path"
-              :alt="network.name"
-            />
+            <img :src="'https://image.tmdb.org/t/p/h15/' + network.logo_path" :alt="network.name" />
           </p>
         </div>
 
         <div class="mb-6 w-full md:w-auto">
           <p class="font-bold mb-1 text-gray-800">Links</p>
-          <p class="text-gray-500"
+          <p
+            class="text-gray-500"
             v-if="
               !serie.homepage &&
                 !serie.external_ids.imdb_id &&
@@ -92,9 +88,14 @@
                 !serie.external_ids.twitter_id"
           >-</p>
           <a target="_blank" v-if="serie.homepage" :href="serie.homepage">
-            <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fas', 'home']" />
+            <font-awesome-icon
+              fixedWidth
+              size="lg"
+              class="mr-2 text-blue-500"
+              :icon="['fas', 'home']"
+            />
           </a>
-          
+
           <a
             target="_blank"
             v-if="serie.external_ids.imdb_id != null"
@@ -103,7 +104,7 @@
             <font-awesome-icon
               fixedWidth
               size="lg"
-              class="text-blue-500"
+              class="mr-2 text-blue-500"
               :icon="['fab', 'imdb']"
             />
           </a>
@@ -115,7 +116,7 @@
             <font-awesome-icon
               fixedWidth
               size="lg"
-              class="text-blue-500"
+              class="mr-2 text-blue-500"
               :icon="['fab', 'facebook-square']"
             />
           </a>
@@ -127,7 +128,7 @@
             <font-awesome-icon
               fixedWidth
               size="lg"
-              class="text-blue-500"
+              class="mr-2 text-blue-500"
               :icon="['fab', 'instagram']"
             />
           </a>
@@ -159,9 +160,9 @@
 </template>
 
 <script>
-import Loader  from "~/components/Loader"
-import Cast from "~/components/Cast"
-import Seasons from "~/components/Seasons"
+import Loader from "~/components/Loader";
+import Cast from "~/components/Cast";
+import Seasons from "~/components/Seasons";
 import { mapState } from "vuex";
 
 export default {

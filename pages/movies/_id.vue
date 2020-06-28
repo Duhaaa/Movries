@@ -95,14 +95,24 @@
             "
           >-</p>
           <a target="_blank" v-if="movie.homepage" :href="movie.homepage">
-            <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fas', 'home']" />
+            <font-awesome-icon
+              fixedWidth
+              size="lg"
+              class="mr-2 text-blue-500"
+              :icon="['fas', 'home']"
+            />
           </a>
           <a
             target="_blank"
             v-if="movie.external_ids.imdb_id != null"
             :href="`https://imdb.com/title/` + movie.external_ids.imdb_id"
           >
-            <font-awesome-icon fixedWidth size="lg" class="text-blue-500" :icon="['fab', 'imdb']" />
+            <font-awesome-icon
+              fixedWidth
+              size="lg"
+              class="mr-2 text-blue-500"
+              :icon="['fab', 'imdb']"
+            />
           </a>
           <a
             target="_blank"
@@ -112,7 +122,7 @@
             <font-awesome-icon
               fixedWidth
               size="lg"
-              class="text-blue-500"
+              class="mr-2 text-blue-500"
               :icon="['fab', 'facebook-square']"
             />
           </a>
@@ -124,7 +134,7 @@
             <font-awesome-icon
               fixedWidth
               size="lg"
-              class="text-blue-500"
+              class="mr-2 text-blue-500"
               :icon="['fab', 'instagram']"
             />
           </a>
