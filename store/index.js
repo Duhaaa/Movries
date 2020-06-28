@@ -88,6 +88,14 @@ export const actions = {
       })
       .catch(e => commit("setError", e))
   },
+  async fetchSeasonByIdAndNumber({commit}, payload) {
+    await this.$api
+      .get(`/tv/${payload.serie_id}/season/${payload.season_number}`)
+      .then(res => {
+        commit("setList", res.data);
+      })
+      .catch(e => commit("setError", e))
+  },
   // Popular Series
   async fetchPopularSeries({ commit }) {
     await this.$api

@@ -38,7 +38,7 @@
     <div class="container mx-auto md:flex px-6">
       <div class="w-full mt-6 md:w-1/4 md:-mt-20 flex flex-wrap md:block md:flex-no-wrap">
         <img
-          :src="'https://image.tmdb.org/t/p/w300/' + serie.poster_path"
+          :src="serie.poster_path ? 'https://image.tmdb.org/t/p/w300/' + serie.poster_path : 'https://via.placeholder.com/400x600?text=MOVRIES'"
           :alt="serie.name"
           class="mb-12 poster-shadow rounded hidden md:inline-block w-full md:w-auto"
         />

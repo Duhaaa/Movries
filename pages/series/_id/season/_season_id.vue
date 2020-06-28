@@ -1,0 +1,88 @@
+<template>
+  <Loader v-if="$fetchState.pending" />
+  <div v-else class="container mx-auto py-6 px-6 md:flex min-h-screen">
+    <div class="w-full md:w-1/4 flex flex-wrap md:block md:flex-no-wrap">
+      <img
+        :src="list.poster_path ? 'https://image.tmdb.org/t/p/w400/' + list.poster_path : 'https://via.placeholder.com/400x600?text=MOVRIES'"
+        alt
+        class="poster-shadow rounded mb-12"
+      />
+    </div>
+    <div class="w-full md:w-3/4 md:ml-12">
+      <h1 class="font-heading text-gray-800 text-4xl mb-6 mt-6 sm:mt-0">{{ list.name }}</h1>
+      <div v-if="list.overview">
+        <h2 class="font-heading text-gray-800 text-xl mb-2">Overview</h2>
+        <p class="text-gray-500 whitespace-pre-line">{{list.overview}}</p>
+      </div>
+
+      <div v-if="list.episodes.length > 0" class="mt-10">
+        <h3 class="font-heading text-lg text-gray-800 mb-2 inline-block mr-2">Episodes</h3>
+        <span class="text-gray-500 inline-block">({{list.episodes.length}})</span>
+        <div v-for="episode in list.episodes" :key="episode.id" class="mb-6">
+          <div class="lg:flex rounded shadow-md">
+            <img
+              :src="episode.still_path ? 'https://image.tmdb.org/t/p/w300/' + episode.still_path : 'https://via.placeholder.com/300x169?text=MOVRIES'"
+              :alt="episode.name"
+              class="rounded w-full lg:w-auto"
+            />
+            <div class="p-4 flex-grow">
+              <div class="flex justify-between items-baseline mb-1">
+                <h4
+                  class="font-heading text-base text-gray-800"
+                >{{ episode.episode_number }} {{ episode.name }}</h4>
+                <span class="text-xs text-gray-800 font-bold">
+                  {{ stringToDate(episode.air_date, {day: "numeric",
+                  month: "long",
+                  year: "numeric"}) }}
+                </span>
+              </div>
+              <div class="mb-2">
+                <span class="bg-gray-900 text-white text-xs px-2 inline-block rounded-full">
+                  <font-awesome-icon
+                    class="inline-block"
+                    size="sm"
+                    fixedWidth
+                    :icon="['fas', 'star']"
+                  />
+                  {{ episode.vote_average.toFixed(1) }}
+                </span>
+              </div>
+              <p class="text-sm text-gray-500">{{ episode.overview ? episode.overview : 'This episode has no summary.' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapState } from "vuex";
+import Loader from "~/components/Loader";
+
+export default {
+  async fetch() {
+    await this.$store.dispatch("fetchSeasonByIdAndNumber", {
+      serie_id: this.$route.params.id,
+      season_number: this.$route.params.season_id
+    });
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["list", "error"])
+  },
+  methods: {
+    stringToDate(date, options) {
+      return new Date(date).toLocaleDateString("en-US", options);
+    }
+  },
+  components: {
+    Loader
+  }
+};
+</script>
+
+<style scoped>
+</style>

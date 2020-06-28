@@ -3,7 +3,7 @@
   <div v-else class="container mx-auto py-6 px-6 md:flex min-h-screen">
     <div class="w-full md:w-1/4 flex flex-wrap md:block md:flex-no-wrap">
       <img
-        :src="'https://image.tmdb.org/t/p/w400/' + person.profile_path"
+        :src="person.profile_path ? 'https://image.tmdb.org/t/p/w400/' + person.profile_path : 'https://via.placeholder.com/400x600?text=MOVRIES'"
         :alt="person.name"
         class="poster-shadow rounded mb-12"
       />

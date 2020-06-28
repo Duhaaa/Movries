@@ -7,7 +7,7 @@
         v-for="season in list.seasons.slice(0, amountOfSeasons)"
         :key="season.id"
       >
-        <nuxt-link to tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer small-card">
+        <nuxt-link :to="list.id + '/season/' + season.season_number" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer small-card">
           <div class="overflow-hidden">
             <img
               :src="
