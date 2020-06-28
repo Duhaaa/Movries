@@ -11,9 +11,9 @@
         <img
           :src="
             sim.poster_path != null
-              ? 'https://image.tmdb.org/t/p/w185/' +
+              ? 'https://image.tmdb.org/t/p/w400/' +
                 sim.poster_path
-              : 'https://via.placeholder.com/185x278?text=MOVRIES'
+              : 'https://via.placeholder.com/400x600?text=MOVRIES'
           "
           :alt="sim.title"
           class="block rounded-t"

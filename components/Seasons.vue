@@ -12,9 +12,9 @@
             <img
               :src="
             season.poster_path != null
-              ? 'https://image.tmdb.org/t/p/w185/' +
+              ? 'https://image.tmdb.org/t/p/w400/' +
                 season.poster_path
-              : 'https://via.placeholder.com/185x278?text=MOVRIES'
+              : 'https://via.placeholder.com/400x600?text=MOVRIES'
           "
               :alt="season.name"
               class="block rounded-t"
