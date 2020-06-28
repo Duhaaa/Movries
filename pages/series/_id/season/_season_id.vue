@@ -36,18 +36,18 @@
                   year: "numeric"}) }}
                 </span>
               </div>
-              <div class="mb-2">
-                <span class="bg-gray-900 text-white text-xs px-2 inline-block rounded-full">
-                  <font-awesome-icon
-                    class="inline-block"
-                    size="sm"
-                    fixedWidth
-                    :icon="['fas', 'star']"
-                  />
-                  {{ episode.vote_average.toFixed(1) }}
-                </span>
+              <div class="mb-2 bg-gray-900 text-white text-xs px-2 inline-block rounded-full">
+                <font-awesome-icon
+                  class="inline-block align-middle mb-px"
+                  size="1x"
+                  fixedWidth
+                  :icon="['fas', 'star']"
+                />
+                <span class="align-middle">{{ episode.vote_average.toFixed(1) }}</span>
               </div>
-              <p class="text-sm text-gray-500">{{ episode.overview ? episode.overview : 'This episode has no summary.' }}</p>
+              <p
+                class="text-sm text-gray-500"
+              >{{ episode.overview ? episode.overview : 'This episode has no summary.' }}</p>
             </div>
           </div>
         </div>
