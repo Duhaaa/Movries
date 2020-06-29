@@ -1,6 +1,5 @@
 <template>
-  <Loader v-if="$fetchState.pending" />
-  <div v-else class="mx-auto">
+  <div class="mx-auto">
     <div
       class="hero bg-gray-700"
       :style="
@@ -160,14 +159,23 @@
 </template>
 
 <script>
-import Loader from "~/components/Loader";
 import Cast from "~/components/Cast";
 import Seasons from "~/components/Seasons";
 import { mapState } from "vuex";
 
 export default {
-  async fetch() {
-    await this.$store.dispatch("fetchSerieById", this.$route.params.id);
+  async asyncData({ store, params, error }) {
+    await store
+      .dispatch("fetchSerieById", params.id)
+      .then(res => {
+        serie: res;
+      })
+      .catch(e => {
+        error({
+          statusCode: 404,
+          message: "Serie not found."
+        });
+      });
   },
   head() {
     return {
@@ -175,10 +183,11 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+    };
   },
   computed: {
-    ...mapState(["serie", "error"]),
+    ...mapState(["serie"]),
     backgroundImage() {
       return "https://image.tmdb.org/t/p/original" + this.serie.backdrop_path;
     }
@@ -189,9 +198,8 @@ export default {
     }
   },
   components: {
-    Loader,
     Cast,
-    Seasons
+    Seasons,
   }
 };
 </script>

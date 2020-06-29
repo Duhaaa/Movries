@@ -1,6 +1,5 @@
 <template>
-  <Loader v-if="$fetchState.pending" />
-  <div v-else class="container mx-auto py-6 px-6">
+  <div class="container mx-auto py-6 px-6">
     <h1 class="font-heading text-4xl mb-4 text-gray-800">{{ title }}</h1>
     <div class="w-full mb-6" >
       <Featured :featured="featuredMovie" :type="type" />
@@ -13,10 +12,22 @@
 <script>
 import Featured from "~/components/Featured";
 import List from "~/components/List";
-import Loader from "~/components/Loader";
 import { mapState } from "vuex";
 
 export default {
+  async asyncData({ store, params, error }) {
+    await store
+      .dispatch("fetchUpcomingMovies")
+      .then(res => {
+        list: res;
+      })
+      .catch(e => {
+        error({
+          statusCode: 404,
+          message: "No movies found."
+        });
+      });
+  },
   head() {
     return {
       title: this.title + " - Movries"
@@ -27,11 +38,8 @@ export default {
       title: "Upcoming Movies"
     };
   },
-  async fetch() {
-    await this.$store.dispatch("fetchUpcomingMovies");
-  },
   computed: {
-    ...mapState(["list", "type", "error"]),
+    ...mapState(["list", "type"]),
     featuredMovie() {
       return this.list.results[0];
     },
@@ -42,7 +50,6 @@ export default {
   components: {
     Featured,
     List,
-    Loader
   }
 };
 </script>

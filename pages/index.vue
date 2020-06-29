@@ -1,6 +1,5 @@
 <template>
-  <Loader v-if="$fetchState.pending" />
-  <div v-else class="container mx-auto py-6 px-6">
+  <div class="container mx-auto py-6 px-6">
     <h1 class="font-heading text-4xl mb-4 text-gray-800">{{ title }}</h1>
     <List :filtered="filteredNoPerson" />
   </div>
@@ -8,18 +7,27 @@
 
 <script>
 import List from "~/components/List";
-import Loader from "~/components/Loader";
 import { mapState } from "vuex";
 
 export default {
-  async fetch() {
-    await this.$store.dispatch("fetchTrending");
+  async asyncData({ store, params, error }) {
+    await store
+      .dispatch("fetchTrending")
+      .then(res => {
+        list: res;
+      })
+      .catch(e => {
+        error({
+          statusCode: 404,
+          message: "No results."
+        });
+      });
   },
   data() {
     return { title: "Discover Movies & Series" };
   },
   computed: {
-    ...mapState(["list", "error"]),
+    ...mapState(["list"]),
     filteredNoPerson() {
       return this.list.results.filter(f => {
         return f.media_type != "person";
@@ -28,7 +36,6 @@ export default {
   },
   components: {
     List,
-    Loader
   }
 };
 </script>

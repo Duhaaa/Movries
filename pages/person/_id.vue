@@ -1,6 +1,5 @@
 <template>
-  <Loader v-if="$fetchState.pending" />
-  <div v-else class="container mx-auto py-6 px-6 md:flex min-h-screen">
+  <div class="container mx-auto py-6 px-6 md:flex min-h-screen">
     <div class="w-full md:w-1/4 flex flex-wrap md:block md:flex-no-wrap">
       <img
         :src="person.profile_path ? 'https://image.tmdb.org/t/p/w400/' + person.profile_path : 'https://via.placeholder.com/400x600?text=MOVRIES'"
@@ -120,11 +119,20 @@
 <script>
 import { mapState } from "vuex";
 import KnownFor from "~/components/KnownFor";
-import Loader from "~/components/Loader";
 
 export default {
-  async fetch() {
-    await this.$store.dispatch("fetchPersonById", this.$route.params.id);
+  async asyncData({ store, params, error }) {
+    await store
+      .dispatch("fetchPersonById", params.id)
+      .then(res => {
+        person: res;
+      })
+      .catch(e => {
+        error({
+          statusCode: 404,
+          message: "No person found."
+        });
+      });
   },
   head() {
     return {
@@ -135,7 +143,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["person", "error"])
+    ...mapState(["person"])
   },
   methods: {
     stringToDate(date, options) {
@@ -143,8 +151,7 @@ export default {
     }
   },
   components: {
-    KnownFor,
-    Loader
+    KnownFor
   }
 };
 </script>

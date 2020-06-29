@@ -1,6 +1,5 @@
 <template>
-  <Loader v-if="$fetchState.pending" />
-  <div v-else class="container mx-auto py-6 px-6 md:flex min-h-screen">
+  <div class="container mx-auto py-6 px-6 md:flex min-h-screen">
     <div class="w-full md:w-1/4 flex flex-wrap md:block md:flex-no-wrap">
       <img
         :src="list.poster_path ? 'https://image.tmdb.org/t/p/w400/' + list.poster_path : 'https://via.placeholder.com/400x600?text=MOVRIES'"
@@ -9,7 +8,7 @@
       />
     </div>
     <div class="w-full md:w-3/4 md:ml-12">
-      <h1 class="font-heading text-gray-800 text-4xl mb-6 mt-6 sm:mt-0">{{ list.name }}</h1>
+      <h1 class="font-heading text-gray-800 text-4xl mb-6">{{ list.name }}</h1>
       <div v-if="list.overview">
         <h2 class="font-heading text-gray-800 text-xl mb-2">Overview</h2>
         <p class="text-gray-500 whitespace-pre-line">{{list.overview}}</p>
@@ -36,14 +35,14 @@
                   year: "numeric"}) }}
                 </span>
               </div>
-              <div class="mb-2 bg-gray-900 text-white text-xs px-2 inline-block rounded-full">
+              <div class="mb-2 bg-yellow-400 text-xs px-2 inline-block rounded">
                 <font-awesome-icon
-                  class="inline-block align-middle mb-px"
+                  class="inline-block align-middle mb-px text-white"
                   size="1x"
                   fixedWidth
                   :icon="['fas', 'star']"
                 />
-                <span class="align-middle">{{ episode.vote_average.toFixed(1) }}</span>
+                <span class="align-middle text-gray-800 font-bold">{{ episode.vote_average.toFixed(1) }}</span>
               </div>
               <p
                 class="text-sm text-gray-500"
@@ -58,29 +57,35 @@
 
 <script>
 import { mapState } from "vuex";
-import Loader from "~/components/Loader";
 
 export default {
-  async fetch() {
-    await this.$store.dispatch("fetchSeasonByIdAndNumber", {
-      serie_id: this.$route.params.id,
-      season_number: this.$route.params.season_id
-    });
+  async asyncData({ store, params, error }) {
+    await store
+      .dispatch("fetchSeasonByIdAndNumber", {
+      serie_id: params.id,
+      season_number: params.season_id
+    })
+      .then(res => {
+        list: res;
+      })
+      .catch(e => {
+        error({
+          statusCode: 404,
+          message: "Season not found."
+        });
+      });
   },
   data() {
     return {};
   },
   computed: {
-    ...mapState(["list", "error"])
+    ...mapState(["list"])
   },
   methods: {
     stringToDate(date, options) {
       return new Date(date).toLocaleDateString("en-US", options);
     }
   },
-  components: {
-    Loader
-  }
 };
 </script>
 

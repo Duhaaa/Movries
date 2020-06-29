@@ -1,6 +1,5 @@
 <template>
-  <Loader v-if="$fetchState.pending" />
-  <div v-else class="mx-auto">
+  <div class="mx-auto">
     <div
       class="hero bg-gray-700"
       :style="
@@ -169,13 +168,22 @@
 <script>
 import SimilarMovies from "~/components/SimilarMovies";
 import Cast from "~/components/Cast";
-import Loader from "~/components/Loader";
 import { mapState } from "vuex";
 import axios from "axios";
 
 export default {
-  async fetch() {
-    await this.$store.dispatch("fetchMovieById", this.$route.params.id);
+  async asyncData({ store, params, error }) {
+    await store
+      .dispatch("fetchMovieById", params.id)
+      .then(res => {
+        movie: res;
+      })
+      .catch(e => {
+        error({
+          statusCode: 404,
+          message: "Movie not found."
+        });
+      });
   },
   head() {
     return {
@@ -186,7 +194,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["movie", "error"]),
+    ...mapState(["movie"]),
     backgroundImage() {
       return "https://image.tmdb.org/t/p/original/" + this.movie.backdrop_path;
     }
@@ -199,7 +207,6 @@ export default {
   components: {
     SimilarMovies,
     Cast,
-    Loader
   }
 };
 </script>
