@@ -9,7 +9,7 @@
       ><nuxt-link :to="'/person/' + cast.id" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer small-card">
         <div class="overflow-hidden">
         <img
-          :src="
+          :data-src="
             cast.profile_path != null
               ? 'https://image.tmdb.org/t/p/w400/' +
                 cast.profile_path
@@ -17,6 +17,7 @@
           "
           :alt="cast.name"
           class="block rounded-t"
+          v-lazy-load
         />
         </div>
         <div class="p-4">

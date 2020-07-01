@@ -21,7 +21,9 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "axios": "^0.19.2",
     "nuxt": "^2.13.1",
-    "nuxt-fontawesome": "^0.4.0"
+    "nuxt-fontawesome": "^0.4.0",
+    "nuxt-lazy-load": "^1.2.4",
+    "nuxt-webfontloader": "^1.1.0"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^1.0.0"

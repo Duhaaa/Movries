@@ -2,6 +2,7 @@
   <div class="mx-auto">
     <div
       class="hero bg-gray-700"
+      lazy-background
       :style="
         `background-image:linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 90%), url(${movie.backdrop_path ? backgroundImage : ''}); background-size:cover;`
       "
@@ -187,7 +188,18 @@ export default {
   },
   head() {
     return {
-      title: this.movie.title + " - Movries"
+      title: this.movie.title + " - Movries",
+      meta: [{
+        hid: "og:title",
+        property: "og:title",
+        content: this.movie.title
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content:
+          this.movie.overview
+      }]
     };
   },
   data() {

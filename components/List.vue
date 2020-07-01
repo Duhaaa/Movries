@@ -8,9 +8,10 @@
       >
         <div class="card-img">
           <img
-            :src="'https://image.tmdb.org/t/p/w400/' + movie.poster_path"
+            :data-src="'https://image.tmdb.org/t/p/w400/' + movie.poster_path"
             :alt="movie.title ? movie.title : movie.name"
             class="block rounded-t"
+            v-lazy-load
           />
         </div>
         <div class="card-info p-4">
@@ -48,3 +49,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.isLoading {
+  background-color: black;
+}
+</style>

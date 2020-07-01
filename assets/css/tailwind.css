@@ -49,7 +49,7 @@ a, button {
 
 .card {
   overflow: hidden;
-  transition: transform 0.4s, box-shadow 0.4s ease-out;
+  transition: transform 0.2s, box-shadow 0.2s ease-out;
 }
 
 .card-img {
@@ -71,5 +71,19 @@ a, button {
 @media (min-width: 640px) {
   .hero-inner {
     height: 32rem;
+  }
+}
+
+.isLoaded {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-in forwards normal;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

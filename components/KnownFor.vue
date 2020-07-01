@@ -14,11 +14,12 @@
         >
           <div class="overflow-hidden">
             <img
-              :src="credit.poster_path != null ? 'https://image.tmdb.org/t/p/w400/' +
+              :data-src="credit.poster_path != null ? 'https://image.tmdb.org/t/p/w400/' +
                 credit.poster_path
               : 'https://via.placeholder.com/400x600?text=MOVRIES'"
               :alt="credit.title"
               class="block rounded-t"
+              v-lazy-load
             />
           </div>
           <div class="p-4">

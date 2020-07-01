@@ -9,7 +9,7 @@
       ><nuxt-link :to="'/movies/' + sim.id" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer small-card">
         <div class="overflow-hidden">
         <img
-          :src="
+          :data-src="
             sim.poster_path != null
               ? 'https://image.tmdb.org/t/p/w400/' +
                 sim.poster_path
@@ -17,6 +17,7 @@
           "
           :alt="sim.title"
           class="block rounded-t"
+          v-lazy-load
         />
         </div>
         <div class="p-4">

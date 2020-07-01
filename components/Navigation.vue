@@ -17,7 +17,7 @@
             >MOVIES</nuxt-link
           >
           <ul
-            class="dropdown-menu bg-white border-transparent rounded shadow-xl mt-1 hidden absolute text-gray-500"
+            class="dropdown-menu bg-white border-transparent rounded shadow-xl mt-1 absolute text-gray-500"
           >
             <li>
               <nuxt-link
@@ -55,7 +55,7 @@
             active-class="dropdown-parent-active"
             >SERIES</nuxt-link
           ><ul
-            class="dropdown-menu bg-white border-transparent rounded shadow-xl mt-1 hidden absolute text-gray-500"
+            class="dropdown-menu bg-white border-transparent rounded shadow-xl mt-1 absolute text-gray-500"
           >
             <li>
               <nuxt-link
@@ -78,7 +78,7 @@
           </ul>
         </li>
       </ul>
-      <div class="py-2">
+      <div class="py-2 hidden">
         <font-awesome-icon
           fixedWidth
           class="align-middle text-gray-500 hover:text-gray-400 cursor-pointer"
@@ -91,8 +91,14 @@
 </template>
 
 <style scoped>
+.dropdown-menu {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s ease-out;
+}
 .dropdown:hover .dropdown-menu {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .dropdown-parent-active {

@@ -4,6 +4,11 @@ require("dotenv").config();
 export default {
   target: "static",
   mode: "universal",
+  webfontloader: {
+    google: {
+      families: ["Montserrat:700", "Open+Sans:400,600"]
+    }
+  },
   /*
    ** Headers of the page
    */
@@ -43,7 +48,7 @@ export default {
         hid: "og:description",
         property: "og:description",
         content:
-          "Movies and Series fetcher using TMDb API and NuxtJS. Created by Duha."
+          "Movries. A Movies and Series fetcher using TMDb API and NuxtJS. Created by Duha."
       },
       {
         hid: "og:image",
@@ -58,11 +63,6 @@ export default {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "stylesheet",
-        href:
-          "https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:400,600"
-      },
       {
         rel: "stylesheet",
         href:
@@ -93,7 +93,15 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: [
+    [
+      "nuxt-lazy-load",
+      {
+        directiveOnly: true,
+        defaultImage: '/images/default-image.png'
+      }
+    ], "nuxt-webfontloader",
+  ],
 
   /*
    ** Build configuration

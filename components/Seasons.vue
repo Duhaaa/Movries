@@ -10,7 +10,7 @@
         <nuxt-link :to="list.id + '/season/' + season.season_number" tag="div" class="shadow-md hover:shadow-xl rounded cursor-pointer small-card">
           <div class="overflow-hidden">
             <img
-              :src="
+              :data-src="
             season.poster_path != null
               ? 'https://image.tmdb.org/t/p/w400/' +
                 season.poster_path
@@ -18,6 +18,7 @@
           "
               :alt="season.name"
               class="block rounded-t"
+              v-lazy-load
             />
           </div>
           <div class="p-4">

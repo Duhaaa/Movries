@@ -136,7 +136,18 @@ export default {
   },
   head() {
     return {
-      title: this.person.name + " - Movries"
+      title: this.person.name + " - Movries",
+      meta: [{
+        hid: "og:title",
+        property: "og:title",
+        content: this.person.name
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content:
+          this.person.biography ? this.person.biography : `There is no biography for biography for ${person.name}.`
+      }]
     };
   },
   data() {

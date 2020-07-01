@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto py-6 px-6">
     <h1 class="font-heading text-4xl mb-4 text-gray-800">{{ title }}</h1>
-    <List :filtered="filteredNoPerson" />
+    <List :filtered="filteredNoPerson"/>
   </div>
 </template>
 

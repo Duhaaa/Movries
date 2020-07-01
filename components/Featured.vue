@@ -3,6 +3,7 @@
     :to="type == 'movie' ? '/movies/' + featured.id : '/series/' + featured.id"
     tag="div"
     class="card feature-card px-2 rounded shadow-md cursor-pointer"
+    lazy-background
     :style="`height: 32rem; background-image: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%), url(${backgroundUrl});`"
   >
     <div class="container flex items-end h-full">

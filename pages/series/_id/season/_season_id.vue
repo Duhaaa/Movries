@@ -20,9 +20,10 @@
         <div v-for="episode in list.episodes" :key="episode.id" class="mb-6">
           <div class="lg:flex rounded shadow-md">
             <img
-              :src="episode.still_path ? 'https://image.tmdb.org/t/p/w300/' + episode.still_path : 'https://via.placeholder.com/300x169?text=MOVRIES'"
+              :data-src="episode.still_path ? 'https://image.tmdb.org/t/p/w300/' + episode.still_path : 'https://via.placeholder.com/300x169?text=MOVRIES'"
               :alt="episode.name"
-              class="rounded w-full lg:w-auto"
+              class="rounded w-full lg:w-auto object-cover"
+              v-lazy-load
             />
             <div class="p-4 flex-grow">
               <div class="flex justify-between items-baseline mb-1">
@@ -42,7 +43,9 @@
                   fixedWidth
                   :icon="['fas', 'star']"
                 />
-                <span class="align-middle text-gray-800 font-bold">{{ episode.vote_average.toFixed(1) }}</span>
+                <span
+                  class="align-middle text-gray-800 font-bold"
+                >{{ episode.vote_average.toFixed(1) }}</span>
               </div>
               <p
                 class="text-sm text-gray-500"
@@ -62,9 +65,9 @@ export default {
   async asyncData({ store, params, error }) {
     await store
       .dispatch("fetchSeasonByIdAndNumber", {
-      serie_id: params.id,
-      season_number: params.season_id
-    })
+        serie_id: params.id,
+        season_number: params.season_id
+      })
       .then(res => {
         list: res;
       })
@@ -74,6 +77,25 @@ export default {
           message: "Season not found."
         });
       });
+  },
+  head() {
+    return {
+      title: this.list.name + "- Movries",
+      meta: [
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: this.list.name
+        },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: this.list.overview
+            ? this.list.overview
+            : "A Movies and Series fetcher using TMDb API and NuxtJS"
+        }
+      ]
+    };
   },
   data() {
     return {};
@@ -85,7 +107,7 @@ export default {
     stringToDate(date, options) {
       return new Date(date).toLocaleDateString("en-US", options);
     }
-  },
+  }
 };
 </script>
 

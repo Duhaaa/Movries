@@ -5,6 +5,7 @@
       :style="
         `background-image:linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 90%), url(${backgroundImage}); background-size:cover;`
       "
+      lazy-background
     >
       <div class="hero-inner container mx-auto flex items-end pb-2">
         <div class="hidden md:block w-1/4"></div>
@@ -71,7 +72,7 @@
         <div class="mb-6 w-1/2 md:w-auto">
           <p class="font-bold text-gray-800">Network</p>
           <p v-for="network in serie.networks" :key="network.id">
-            <img :src="'https://image.tmdb.org/t/p/h15/' + network.logo_path" :alt="network.name" />
+            <img :src="'https://image.tmdb.org/t/p/h30/' + network.logo_path" :alt="network.name" />
           </p>
         </div>
 
@@ -179,7 +180,18 @@ export default {
   },
   head() {
     return {
-      title: this.serie.name + " - Movries"
+      title: this.serie.name + " - Movries",
+      meta: [{
+        hid: "og:title",
+        property: "og:title",
+        content: this.serie.name
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content:
+          this.serie.overview
+      }]
     };
   },
   data() {
