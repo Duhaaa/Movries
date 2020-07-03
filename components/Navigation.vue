@@ -76,13 +76,13 @@
                 name="q"
                 v-model="q"
                 placeholder="Search Movries"
-                class="px-2 rounded mr-1 w-full"
+                class="px-2 rounded mr-2 w-full"
               />
               <button type="submit" @click.stop.prevent="submit">
                 <font-awesome-icon
                   fixedWidth
                   class="align-middle text-gray-500 hover:text-gray-400"
-                  size="sm"
+                  size="1x"
                   :icon="['fas', 'search']"
                 />
               </button>
