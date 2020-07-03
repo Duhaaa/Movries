@@ -8,7 +8,7 @@
       >
         <div class="card-img">
           <img
-            :data-src="'https://image.tmdb.org/t/p/w400/' + movie.poster_path"
+            :data-src="movie.poster_path ? 'https://image.tmdb.org/t/p/w400/' + movie.poster_path : 'https://via.placeholder.com/400x600?text=MOVRIES'"
             :alt="movie.title ? movie.title : movie.name"
             class="block rounded-t"
             v-lazy-load
