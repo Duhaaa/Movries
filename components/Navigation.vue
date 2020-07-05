@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <header class="bg-gray-900 font-semibold sticky top-0 z-50">
+  <div class="sticky top-0 z-50">
+    <header class="bg-gray-900 font-semibold">
       <div class="container mx-auto py-4 flex justify-between px-6">
         <ul class="flex items-center">
           <li class="mr-6">
