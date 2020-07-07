@@ -1,7 +1,7 @@
 # Movries
 
 > Movies and Series fetcher using TMDb API and NuxtJS
-http://movries.surge.sh
+> Demo: http://movries.surge.sh
 
 ## Build Setup
 
