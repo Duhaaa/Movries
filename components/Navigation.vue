@@ -76,7 +76,7 @@
                 name="q"
                 v-model="q"
                 placeholder="Search Movries"
-                class="px-2 rounded mr-2 w-full"
+                class="px-4 py-2 rounded mr-2 w-full"
               />
               <button type="submit" @click.stop.prevent="submit">
                 <font-awesome-icon
